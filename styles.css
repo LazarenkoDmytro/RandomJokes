@@ -40,6 +40,12 @@ h1 {
     color: #555;
 }
 
+#error-message {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
 @media only screen and (max-width: 768px) {
     .container {
         padding: 10px;

@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const jokesContainer = document.getElementById('jokes-container');
+    const errorMessage = document.getElementById('error-message');
 
     async function fetchJokes() {
         try {
             const response = await fetch('https://official-joke-api.appspot.com/jokes/random/25');
             if (!response.ok) {
                 console.error('Failed to fetch jokes');
+                showError();
                 return;
             }
 
@@ -13,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             renderJokes(jokes);
         } catch (error) {
             console.error('Error fetching jokes:', error);
+            showError();
         }
     }
 
@@ -31,6 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
             jokesList.appendChild(jokeItem);
         });
         jokesContainer.appendChild(jokesList);
+    }
+
+    function showError() {
+        errorMessage.style.display = 'block';
     }
 
     fetchJokes().catch(error => {
