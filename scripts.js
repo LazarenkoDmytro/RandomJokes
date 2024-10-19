@@ -32,4 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         jokesContainer.appendChild(jokesList);
     }
+
+    fetchJokes().catch(error => {
+        console.error('Unexpected error:', error);
+        showError();
+    });
 });
